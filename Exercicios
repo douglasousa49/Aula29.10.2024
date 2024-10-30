@@ -1,0 +1,354 @@
+	
+
+//////////////////////////////////////////////////////////////////
+// ABSTRACAO POR FUNCAO
+
+
+
+import java.util.Scanner;
+
+
+
+public class Retangulo {
+    
+    public int area(int base, int altura) {
+        return base * altura;
+    }
+
+    public int perimetro(int base, int altura) {
+        return base * 2 + altura * 2;
+    }
+
+}
+
+
+
+import java.util.Scanner;
+
+public class App {
+    
+    public static void main(String[] args) throws Exception {
+        Scanner ler = new Scanner(System.in);
+        
+        System.out.println("PROGRAMA DO REGÂNGULO");
+        System.out.println("");
+
+        System.out.println("Informe a base:");
+        int b = ler.nextInt();
+
+        System.out.println("Informe a altura:");
+        int a = ler.nextInt();
+
+
+        Retangulo ret = new Retangulo();
+        int area = ret.area(b, a);
+        int perim = ret.perimetro(b, a);
+
+
+        System.out.println();
+        System.out.printf("Área: %d \n", area);
+        System.out.printf("Perímetro: %d \n", perim);
+    }
+}
+
+
+ 
+
+
+//////////////////////////////////////////////////////////////////
+// ABSTRACAO POR VALOR
+
+
+class FormaRetangulo {
+
+    public int base;
+    public int altura;
+
+}
+
+
+class Retangulo {
+
+    public int area(FormaRetangulo ret) {
+        return ret.altura * ret.base;
+    }
+
+    public int perimetro(FormaRetangulo ret) {
+        return ret.altura * 2 + ret.base * 2;
+    }
+
+
+}
+
+
+
+
+
+import java.util.Scanner;
+
+public class App {
+    
+    public static void main(String[] args) throws Exception {
+        Scanner ler = new Scanner(System.in);
+        
+        System.out.println("PROGRAMA DO REGÂNGULO");
+        System.out.println("");
+
+
+        FormaRetangulo meuRet = new FormaRetangulo();
+
+        System.out.println("Informe a base:");
+        meuRet.base = ler.nextInt();
+
+        System.out.println("Informe a altura:");
+        meuRet.altura = ler.nextInt();
+
+
+        Retangulo ret = new Retangulo();
+        int area = ret.area(meuRet);
+        int perim = ret.perimetro(meuRet);
+
+
+        System.out.println();
+        System.out.printf("Área: %d \n", area);
+        System.out.printf("Perímetro: %d \n", perim);
+    }
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////
+// ABSTRACAO MIX FUNCAO E VALOR
+
+
+class Retangulo {
+
+    public int altura;
+    public int base;
+
+    public int area() {
+        return this.altura * this.base;
+    }
+
+    public int perimetro() {
+        return this.altura * 2 + this.base * 2;
+    }
+
+
+}
+
+
+
+
+
+import java.util.Scanner;
+
+public class App {
+    
+    public static void main(String[] args) throws Exception {
+        Scanner ler = new Scanner(System.in);
+
+        Retangulo ret = new Retangulo();
+
+        System.out.println("PROGRAMA DO REGÂNGULO");
+        System.out.println("");
+
+        System.out.println("Informe a base:");
+        ret.base = ler.nextInt();
+
+        System.out.println("Informe a altura:");
+        ret.altura = ler.nextInt();
+
+        System.out.println();
+
+        int area = ret.area();
+        int perim = ret.perimetro();
+
+        System.out.println();
+        System.out.printf("Área: %d \n", area);
+        System.out.printf("Perímetro: %d \n", perim);
+    }
+    
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////
+// ABSTRACAO DADO E FUNCAO 02 (VOID)
+
+
+import java.util.Scanner;
+
+public class App {
+    
+    public static void main(String[] args) throws Exception {
+        Scanner ler = new Scanner(System.in);
+        
+        System.out.println("PROGRAMA DO RETÂNGULO");
+        System.out.println("");
+
+        Retangulo meuRet = new Retangulo();
+
+        System.out.println("Informe a base:");
+        meuRet.base = ler.nextInt();
+
+        System.out.println("Informe a altura:");
+        meuRet.altura = ler.nextInt();
+
+        meuRet.area();
+        meuRet.perimetro();
+
+        System.out.println();
+        System.out.printf("Área: %d \n", meuRet.lerArea());
+        System.out.printf("Perímetro: %d \n", meuRet.lerPerimetro());
+    }
+}
+
+
+
+
+
+
+class Retangulo {
+
+    public int base;
+    public int altura;
+
+    private int area;
+    private int perimetro;
+
+
+    public void area() {
+        this.area = this.base * this.altura;
+    }
+
+    public void perimetro() {
+        this.perimetro = this.base * 2 + this.altura * 2;
+    }
+
+    public int lerArea() {
+        return this.area;
+    }
+
+    public int lerPerimetro() {
+        return this.perimetro;
+    }
+
+
+}
+
+
+
+/////////////////////////////////////////////////////////////////
+
+
+public class Response {
+
+    private int area;
+    private int perimetro;
+
+    
+    public Response(int a, int p) {
+        this.area = a;
+        this.perimetro = p;
+    }
+
+
+    public int lerArea() {
+        return area;
+    }
+
+    public int lerPerimetro() {
+        return perimetro;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+class Retangulo {
+
+    public int base;
+    public int altura;
+    
+    private Response response;
+
+    public void calcular() {
+        int a = area();
+        int p = perimetro();
+
+        response = new Response(a, p);
+    }
+
+    private int area() {
+        return this.base * this.altura;
+    }
+
+    private int perimetro() {
+        return this.base * 2 + this.altura * 2;
+    }
+
+    public Response lerResponse() {
+        return this.response;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+import java.util.Scanner;
+
+public class App {
+    
+    public static void main(String[] args) throws Exception {
+        Scanner ler = new Scanner(System.in);
+        
+        System.out.println("PROGRAMA DO RETÂNGULO");
+        System.out.println("");
+
+        Retangulo meuRet = new Retangulo();
+
+        System.out.println("Informe a base:");
+        meuRet.base = ler.nextInt();
+
+        System.out.println("Informe a altura:");
+        meuRet.altura = ler.nextInt();
+
+        meuRet.calcular();
+
+        Response r = meuRet.lerResponse();
+
+        System.out.println();
+        System.out.printf("Área: %d \n", r.lerArea());
+        System.out.printf("Perímetro: %d \n", r.lerPerimetro());
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
